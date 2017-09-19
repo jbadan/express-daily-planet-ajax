@@ -38,10 +38,8 @@ app.get('/articles/:index', function(req, res) {
 
 // app.get('/articles/:index/edit', function(req, res) {
 //     var index = parseInt(req.params.index);
-//     if (index < articles.length && index >= 0) {
-//         res.render('articles/edit', { article: articles[req.params.index] });
-//     } else {
-//         res.send('Error');
+//     if(index < articles.length && index >=0){
+//         res.render('edit', {article: articles[index]});
 //     }
 // });
 

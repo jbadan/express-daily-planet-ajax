@@ -5,7 +5,7 @@
 </div>
 
 <p>Use this form to edit the article</p>
-<form method="POST" action="/articles" id="put-form">
+<form action="/articles/<%= id %>" id="put-form">
   <label for="articleTitle">Title</label>
   <input type="text" name="title">
   <label for="articleBody">Body</label>
@@ -28,8 +28,7 @@
       url: updateUrl,
       data: articleData
     }).done(function(data) {
-      // get data returned from the PUT route
-      console.log(data);
+      window.location.href = './';
     });
   });
 </script>
