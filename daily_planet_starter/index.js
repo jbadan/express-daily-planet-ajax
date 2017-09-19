@@ -36,10 +36,11 @@ app.get('/articles/:index', function(req, res) {
     }
 });
 
-app.get('/articles/:index/edit', function(req, res) {
-    var index = parseInt(req.params.index);
-    res.render('articles/edit', {article: articles[index], id: index});
-});
+//from matt!
+// app.get('/articles/:id/edit', function(req, res) {
+//     var index = req.params.index;
+//     res.render('articles/edit', {article: articles[req.param.id], id: [req.param.id]});
+// });
 
 app.post('/articles', function(req, res) {
     articles.push(req.body);
@@ -63,6 +64,13 @@ app.put('/articles/:id', function(req, res) {
   articles[articleId].body = req.body.body;
   res.send({message: 'success'});
 });
+
+// app.put('/articles/:id/edit', function(req, res){
+//     var articleId = req.params.id;
+//     articles[articleId].title = req.body.title;
+//     articles[articleId].body = req.body.body;
+//     res.send({message: 'success'});  
+// })
 
 app.get('/*', function(req, res){
     res.redirect('/articles');

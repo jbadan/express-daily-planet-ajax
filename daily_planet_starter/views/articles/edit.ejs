@@ -1,3 +1,4 @@
+<link href="/styles.css" rel="stylesheet" type="text/css">
 <h2><%= article.title %></h2>
 
 <div class="well" class="bodyText">
@@ -5,9 +6,9 @@
 </div>
 
 <p>Edit the article below</p>
-<form action="/articles/<%= id %>" id="put-form">
-  <input id="titleInput" type="text" name="title" value="Enter new title here"> <br>
-  <textarea id="bodyInput" form="put-form" name="body">Enter new body text here..</textarea> <br>
+<form action="/articles/edit/<%= id %>" id="put-form">
+  <input id="titleInput" type="text" name="title" value="<%= article.title %>"> <br>
+  <textarea id="bodyInput" form="put-form" name="body"><%=article.body%></textarea> <br>
   <input type="button" value="Update">
 </form>
 
