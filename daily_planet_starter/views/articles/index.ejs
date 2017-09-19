@@ -2,8 +2,47 @@
 
 <a href="/articles/new" class="btn btn-primary">New Article</a>
 
-<% articles.forEach(function(article, idx) { %>
+<% articles.forEach(function(article, id) { %>
   <div class="well">
-    <a href="/articles/<%= idx %>"><h2><%= article.title %></h2></a>
+    <a href="/articles/<%= id %>">
+    <h2><%= article.title %></h2> 
+    <button class="delete-link" href="/articles/<%= id %>">Delete</button>
+
+    <button class="edit-link" href="/articles/<%= id %>/edit">Edit</button>
+    </a>
   </div>
 <% }); %>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+<script>
+  $('.delete-link').on('click', function(e) {
+    e.preventDefault();
+    var deleteUrl = $(this).attr('href');
+    $.ajax({
+      method: 'DELETE',
+      url: deleteUrl
+    }).done(function(data) {
+      // get data returned from the DELETE route
+      window.location.reload();
+    });
+  });
+
+  //   $('.edit-link').on('click', function(e) {
+  //   var editUrl = $(this).attr('href');
+  //   $.ajax({
+  //     method: 'GET',
+  //     url: editUrl
+  //   }).done(function(data) {
+  //     // get data returned from the DELETE route
+  //     console.log('edit clicked');
+  //     // window.location.reload();
+  //   });
+  // });
+
+
+</script>
