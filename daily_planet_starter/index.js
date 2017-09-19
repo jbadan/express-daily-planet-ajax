@@ -32,16 +32,14 @@ app.get('/articles/:index', function(req, res) {
     if (index < articles.length && index >= 0) {
         res.render('articles/show', { article: articles[req.params.index], id: index });
     } else {
-        res.send('Error');
+        res.redirect('/articles');
     }
 });
 
-// app.get('/articles/:index/edit', function(req, res) {
-//     var index = parseInt(req.params.index);
-//     if(index < articles.length && index >=0){
-//         res.render('edit', {article: articles[index]});
-//     }
-// });
+app.get('/articles/:index/edit', function(req, res) {
+    var index = parseInt(req.params.index);
+    res.render('articles/edit', {article: articles[index], id: index});
+});
 
 app.post('/articles', function(req, res) {
     articles.push(req.body);
@@ -66,9 +64,10 @@ app.put('/articles/:id', function(req, res) {
   res.send({message: 'success'});
 });
 
+app.get('/*', function(req, res){
+    res.redirect('/articles');
+});
+
 app.listen(3000, function() {
     console.log("You're listening to the smooth sounds of port 3000 in the morning");
 });
-
-
-//use wildcard routes- search express wildcard routes

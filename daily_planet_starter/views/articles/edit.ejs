@@ -1,17 +1,17 @@
-<h1><%= article.title %></h1>
+<h2><%= article.title %></h2>
 
-<div class="well">
+<div class="well" class="bodyText">
   <p><%= article.body %></p>
 </div>
 
-<p>Use this form to edit the article</p>
+<p>Edit the article below</p>
 <form action="/articles/<%= id %>" id="put-form">
-  <label for="articleTitle">Title</label>
-  <input type="text" name="title">
-  <label for="articleBody">Body</label>
-  <input type="text" name="body">
+  <input id="titleInput" type="text" name="title" value="Enter new title here"> <br>
+  <textarea id="bodyInput" form="put-form" name="body">Enter new body text here..</textarea> <br>
   <input type="button" value="Update">
 </form>
+
+<button id="back" href="./">Back</button>
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -31,4 +31,8 @@
       window.location.href = './';
     });
   });
+
+  $("#back").on('click', function(){
+    window.location.href = './';
+  })
 </script>
